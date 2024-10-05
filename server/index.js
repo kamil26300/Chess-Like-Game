@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   path: "/api/socket",
   cors: {
-    origin: "https://heros-quest.vercel.app/",
+    origin: "https://heros-quest.vercel.app",
     methods: ["GET", "POST"],
   },
 });
