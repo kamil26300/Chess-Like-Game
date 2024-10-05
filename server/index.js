@@ -6,8 +6,8 @@ const gameLogic = require("./gameLogic");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
+  path: "/api/socket.io",
   cors: {
-    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
