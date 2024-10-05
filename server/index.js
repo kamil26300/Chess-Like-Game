@@ -15,7 +15,9 @@ const io = socketIo(server, {
 
 const games = new Map();
 
-server.use("/", (req, res) => res.send("hello"));
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 
 io.on("connection", (socket) => {
   // console.log(`${socket.id} connected`);
