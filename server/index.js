@@ -6,8 +6,9 @@ const gameLogic = require("./gameLogic");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
-  path: "/api/socket.io",
+  path: "/api/socket",
   cors: {
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -76,10 +77,10 @@ io.on("connection", (socket) => {
       io.emit("gameWon", gameLogic.anyWon(board));
     }
   };
-  
+
   socket.on("makeMove", (gameId, selected, move) => {
     const game = games.get(gameId);
-    
+
     if (selected.piece.char === "H2") {
       makeMove(game, selected, move, "diagonal", 2);
     } else if (selected.piece.char === "H1") {
